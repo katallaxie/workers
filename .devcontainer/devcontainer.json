@@ -1,5 +1,5 @@
 {
-  "name": "katallaxie/template-go",
+  "name": "katallaxie/workers",
   "build": {
       "dockerfile": "Dockerfile",
       // Update 'VARIANT' to pick an Ubuntu version: jammy / ubuntu-22.04, focal / ubuntu-20.04, bionic /ubuntu-18.04
@@ -15,6 +15,9 @@
     "ghcr.io/devcontainers/features/go:1":{},
     "ghcr.io/devcontainers/features/node:1": {}
   },
+  "remoteEnv": {
+    "PATH": "/usr/local/go/misc/wasm:${containerEnv:PATH}"
+  },
   "customizations": {
     "vscode": {
         "extensions": [
@@ -22,7 +25,7 @@
             "GitHub.vscode-github-actions",
             "golang.go",
             "ms-vscode.cpptools",
-            "ms-vscode.makefile-tools" 
+            "ms-vscode.makefile-tools"
         ]
     }
   }
