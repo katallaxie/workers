@@ -1,12 +1,10 @@
-module github.com/katallaxie/template-go
+module github.com/katallaxie/workers
 
-go 1.20
+go 1.21
 
 require (
 	github.com/golang/mock v1.7.0-rc.1
 	github.com/golangci/golangci-lint v1.54.2
-	github.com/katallaxie/pkg v0.5.8
-	github.com/spf13/cobra v1.7.0
 	mvdan.cc/gofumpt v0.5.0
 )
 
@@ -143,6 +141,7 @@ require (
 	github.com/sourcegraph/go-diff v0.7.0 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
+	github.com/spf13/cobra v1.7.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.12.0 // indirect
