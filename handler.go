@@ -9,12 +9,12 @@ import (
 var handler http.Handler
 
 // Serve serves the given handler.
-func Serve(handler http.Handler) {
+func Serve(h http.Handler) {
 	if handler == nil {
 		handler = http.DefaultServeMux
 	}
 
-	handler = handler
+	handler = h
 	utils.Global.Call("ready")
 
 	select {}
