@@ -3,4 +3,5 @@
 
 package main
 
-//go:generate echo "Generating..."
+//go:generate cp ${GOROOT}/misc/wasm/wasm_exec.js ./cmd/gen/files/wasm_exec_go.js
+//go:generate cp ${TINYGOROOT}/targets/wasm_exec.js ./cmd/gen/files/wasm_exec_tinygo.js

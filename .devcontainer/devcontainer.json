@@ -12,8 +12,9 @@
   "postCreateCommand": "bash scripts/postCreateCommand.sh",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/go:1":{},
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/go:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/katallaxie/devcontainer-features/tinygo:1": {}
   },
   "remoteEnv": {
     "PATH": "/usr/local/go/misc/wasm:${containerEnv:PATH}"

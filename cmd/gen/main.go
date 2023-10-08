@@ -2,11 +2,16 @@ package main
 
 import (
 	"context"
+	"embed"
+	"fmt"
 	"os"
 
 	"github.com/katallaxie/pkg/utils/files"
 	"github.com/spf13/cobra"
 )
+
+//go:embed files
+var f embed.FS
 
 type config struct {
 	TinyGo    bool
@@ -53,6 +58,11 @@ var rootCmd = &cobra.Command{
 }
 
 func runRoot(ctx context.Context) error {
+	root, ok := os.LookupEnv("TINYGOROOT")
+	if !ok {
+		return fmt.Errorf("TINYGOROOT not set")
+	}
+
 	err := files.Clean(cfg.OutDir, os.ModePerm)
 	if err != nil {
 		return err
