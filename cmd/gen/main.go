@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"embed"
-	"fmt"
 	"os"
 
 	"github.com/katallaxie/pkg/utils/files"
@@ -14,11 +13,10 @@ import (
 var f embed.FS
 
 type config struct {
-	TinyGo    bool
-	Verbose   bool
-	AssetDir  string
-	CommonDir string
-	OutDir    string
+	TinyGo   bool
+	Verbose  bool
+	FilesDir string
+	OutDir   string
 }
 
 func (c *config) Cwd() (string, error) {
@@ -32,11 +30,10 @@ func (c *config) Cwd() (string, error) {
 
 func defaultConfig() *config {
 	return &config{
-		TinyGo:    true,
-		Verbose:   false,
-		AssetDir:  "assets",
-		CommonDir: "assets/common",
-		OutDir:    "build",
+		TinyGo:   true,
+		Verbose:  false,
+		FilesDir: "files",
+		OutDir:   "build",
 	}
 }
 
@@ -58,9 +55,9 @@ var rootCmd = &cobra.Command{
 }
 
 func runRoot(ctx context.Context) error {
-	root, ok := os.LookupEnv("TINYGOROOT")
-	if !ok {
-		return fmt.Errorf("TINYGOROOT not set")
+	ff, err := f.ReadDir("files")
+	if err != nil {
+		return err
 	}
 
 	err := files.Clean(cfg.OutDir, os.ModePerm)

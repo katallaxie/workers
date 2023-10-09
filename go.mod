@@ -3,6 +3,7 @@ module github.com/katallaxie/workers
 go 1.21
 
 require (
+	github.com/evanw/esbuild v0.19.4
 	github.com/golang/mock v1.7.0-rc.1
 	github.com/golangci/golangci-lint v1.54.2
 	github.com/katallaxie/pkg v0.5.9
