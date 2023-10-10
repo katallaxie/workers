@@ -37,8 +37,8 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "gen",
-	Short: "gen",
+	Use:   "build",
+	Short: "build",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return runRoot(cmd.Context())
 	},
@@ -48,7 +48,7 @@ func runRoot(ctx context.Context) error {
 	result := api.Build(api.BuildOptions{
 		EntryPoints: []string{"cmd/build/src/worker.ts"},
 		Outdir:      "dist",
-		Bundle:      false,
+		Bundle:      true,
 		Write:       true,
 		LogLevel:    api.LogLevelInfo,
 	})

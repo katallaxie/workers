@@ -5,7 +5,6 @@ import (
 	"embed"
 	"os"
 
-	"github.com/katallaxie/pkg/utils/files"
 	"github.com/spf13/cobra"
 )
 
@@ -55,15 +54,15 @@ var rootCmd = &cobra.Command{
 }
 
 func runRoot(ctx context.Context) error {
-	ff, err := f.ReadDir("files")
-	if err != nil {
-		return err
-	}
+	// ff, err := f.ReadDir("files")
+	// if err != nil {
+	// 	return err
+	// }
 
-	err := files.Clean(cfg.OutDir, os.ModePerm)
-	if err != nil {
-		return err
-	}
+	// err := files.Clean(cfg.OutDir, os.ModePerm)
+	// if err != nil {
+	// 	return err
+	// }
 
 	return nil
 }

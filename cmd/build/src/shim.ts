@@ -1,6 +1,6 @@
 /// <reference path='global.d.ts'/>
 
-import "./wasm_exec_go.js";
+import "./wasm_exec_go";
 
 export const go = new Go();
 
