@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"net/http"
 	"syscall/js"
 	"testing"
 
@@ -10,19 +11,19 @@ import (
 func TestToJS(t *testing.T) {
 	tests := []struct {
 		name string
-		h    Headers
+		h    http.Header
 		want js.Value
 	}{
 		{
 			name: "empty",
-			h:    Headers{},
+			h:    http.Header{},
 			want: HeadersClass.New(),
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := tt.h.ToJS()
+			got := FromHeaderToJS(tt.h)
 			assert.NotNil(t, got)
 
 			entries := ArrayFrom(got.Call("entries"))
@@ -35,12 +36,12 @@ func TestFromJS(t *testing.T) {
 	tests := []struct {
 		name    string
 		headers js.Value
-		want    Headers
+		want    http.Header
 	}{
 		{
 			name:    "empty",
 			headers: HeadersClass.New(),
-			want:    Headers{},
+			want:    http.Header{},
 		},
 	}
 

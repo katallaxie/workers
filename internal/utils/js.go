@@ -16,6 +16,7 @@ var (
 	ErrorClass          = Global.Get("Error")
 	ReadableStreamClass = Global.Get("ReadableStream")
 	DateClass           = Global.Get("Date")
+	Undefined           = js.Undefined()
 	Null                = js.ValueOf(nil)
 )
 
