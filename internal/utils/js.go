@@ -1,6 +1,9 @@
 package utils
 
-import "syscall/js"
+import (
+	"fmt"
+	"syscall/js"
+)
 
 var (
 	Global              = js.Global()
@@ -38,4 +41,33 @@ func NewPromise(fn js.Func) js.Value {
 // ArrayFrom returns a new Array from a given iterable.
 func ArrayFrom(iterable js.Value) js.Value {
 	return ArrayClass.Call("from", iterable)
+}
+
+// Await ...
+func Await(promise js.Value) (js.Value, error) {
+	result := make(chan js.Value)
+	err := make(chan error)
+
+	var then, catch js.Func
+	then = js.FuncOf(func(_ js.Value, args []js.Value) any {
+		defer then.Release()
+		result := args[0]
+		result <- result
+		return js.Undefined()
+	})
+	catch = js.FuncOf(func(_ js.Value, args []js.Value) any {
+		defer catch.Release()
+		result := args[0]
+		err <- fmt.Errorf("failed on promise: %s", result.Call("toString").String())
+		return js.Undefined()
+	})
+
+	promise.Call("then", then).Call("catch", catch)
+
+	select {
+	case result := <-result:
+		return result, nil
+	case err := <-err:
+		return js.Value{}, err
+	}
 }
