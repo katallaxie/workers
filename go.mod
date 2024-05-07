@@ -3,7 +3,7 @@ module github.com/katallaxie/workers
 go 1.21
 
 require (
-	github.com/evanw/esbuild v0.20.2
+	github.com/evanw/esbuild v0.21.0
 	github.com/golang/mock v1.7.0-rc.1
 	github.com/golangci/golangci-lint v1.58.0
 	github.com/spf13/cobra v1.8.0
