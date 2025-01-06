@@ -6,7 +6,7 @@ toolchain go1.22.5
 require (
 	github.com/evanw/esbuild v0.24.2
 	github.com/golang/mock v1.7.0-rc.1
-	github.com/golangci/golangci-lint v1.63.3
+	github.com/golangci/golangci-lint v1.63.4
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.10.0
 	mvdan.cc/gofumpt v0.7.0
