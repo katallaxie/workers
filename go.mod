@@ -1,6 +1,6 @@
 module github.com/katallaxie/workers
 
-go 1.24
+go 1.23.7
 
 require (
 	github.com/katallaxie/pkg v0.7.1-0.20250305100222-477833006000

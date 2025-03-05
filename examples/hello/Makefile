@@ -1,5 +1,5 @@
 WRANGLER 		?= npx -y wrangler
-GO 				?= go
+GO 				?= go1.23.7
 GO_RUN_TOOLS	?= $(GO) run -modfile ../../tools/go.mod
 GO_RUN 			?= $(GO) run -modfile ../../go.mod
 TINYGO 			?= tinygo
@@ -10,9 +10,8 @@ dev:
 
 .PHONY: build
 build:
-	$(GO_RUN) ../../cmd/gen/main.go
-	GOOS=js GOARCH=wasm go build -o ./build/app.wasm
-	# $(TINYGO) build -o ./build/app.wasm -target wasm -no-debug ./...
+	$(GO_RUN) ../../cmd/gen/main.go --entrypoint wasm_exec_tinygo.js
+	$(TINYGO) build -o ./build/app.wasm -target wasm -no-debug ./...
 
 .PHONY: deploy
 deploy:
