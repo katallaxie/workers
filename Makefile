@@ -1,23 +1,27 @@
 .DEFAULT_GOAL := build
 
-GO ?= go
-GO_RUN_TOOLS ?= $(GO) run -modfile ./tools/go.mod
-GO_TEST = $(GO) test
-GO_RELEASER ?= $(GO_RUN_TOOLS) github.com/goreleaser/goreleaser
-GO_MOD ?= $(shell ${GO} list -m)
-GO_GOOS ?= js
-GO_GOARCH ?= wasm
+# Go variables
+GO 							?= go
+GO_RUN_TOOLS 		?= $(GO) run -modfile ./tools/go.mod
+GO_TEST 				?= $(GO_RUN_TOOLS) gotest.tools/gotestsum --format pkgname
+GO_RELEASER 		?= $(GO_RUN_TOOLS) github.com/goreleaser/goreleaser
+GO_MOD					?= $(shell ${GO} list -m)
 
-# Module name
-MODULE_NAME ?= github.com/katallaxie/template-go
+.PHONY: release
+release: ## Release the project.
+	$(GO_RELEASER) release --clean
 
 .PHONY: build
 build: ## Build the binary file.
-	$(GO_RELEASER) build --snapshot --rm-dist
+	$(GO_RELEASER) build --snapshot --clean
 
 .PHONY: generate
 generate: ## Generate code.
 	$(GO) generate ./...
+
+.PHONY: mocks
+mocks: ## Generate mocks.
+	$(GO_RUN_TOOLS) github.com/vektra/mockery/v2
 
 .PHONY: fmt
 fmt: ## Run go fmt against code.
@@ -25,11 +29,12 @@ fmt: ## Run go fmt against code.
 
 .PHONY: vet
 vet: ## Run go vet against code.
-	GOOS=$(GO_GOOS) GOARCH=$(GO_GOARCH) $(GO) vet ./...
+	$(GO) vet ./...
 
 .PHONY: test
 test: fmt vet ## Run tests.
-	GOOS=$(GO_GOOS) GOARCH=$(GO_GOARCH) $(GO_TEST) ./...
+	mkdir -p .test/reports
+	$(GO_TEST) --junitfile .test/reports/unit-test.xml -- -race ./... -count=1 -short -cover -coverprofile .test/reports/unit-test-coverage.out
 
 .PHONY: lint
 lint: ## Run lint.
@@ -37,14 +42,9 @@ lint: ## Run lint.
 
 .PHONY: clean
 clean: ## Remove previous build.
-	rm -rf .test .dist
-	find . -type f -name '*.gen.go' -exec rm {} +
-	git checkout go.mod
-
-.PHONY: setup
-setup: ## Setup the project.
-	$(GO) mod edit -module $(MODULE_NAME)
-	find . -type f -name '*.go' -exec sed -i -e 's,${GO_MOD},${MODULE_NAME},g' {} \;
+	@rm -rf .test .dist
+	@find . -type f -name '*.gen.go' -exec rm {} +
+	@git checkout go.mod
 
 .PHONY: help
 help: ## Display this help screen.
