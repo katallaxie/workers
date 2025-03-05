@@ -1,9 +1,9 @@
-module github.com/katallaxie/workers/examples/hello
+module hello
 
 go 1.24
 
-require github.com/katallaxie/workers v0.0.0
+toolchain go1.24.0
 
-require github.com/kelseyhightower/envconfig v1.4.0 // indirect
+require github.com/katallaxie/workers v0.0.0
 
 replace github.com/katallaxie/workers => ../../
