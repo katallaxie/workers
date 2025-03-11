@@ -9,7 +9,7 @@ require (
 	github.com/goreleaser/goreleaser/v2 v2.7.0
 	github.com/katallaxie/pkg v0.7.0
 	github.com/tinygo-org/tinygo v0.36.0
-	github.com/vektra/mockery/v2 v2.53.1
+	github.com/vektra/mockery/v2 v2.53.2
 	gotest.tools/gotestsum v1.12.0
 	mvdan.cc/gofumpt v0.7.0
 )
