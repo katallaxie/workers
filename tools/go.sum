@@ -1063,8 +1063,8 @@ github.com/timakin/bodyclose v0.0.0-20241017074812-ed6a65f985e3 h1:y4mJRFlM6fUyP
 github.com/timakin/bodyclose v0.0.0-20241017074812-ed6a65f985e3/go.mod h1:mkjARE7Yr8qU23YcGMSALbIxTQ9r9QBVahQOBRfU460=
 github.com/timonwong/loggercheck v0.10.1 h1:uVZYClxQFpw55eh+PIoqM7uAOHMrhVcDoWDery9R8Lg=
 github.com/timonwong/loggercheck v0.10.1/go.mod h1:HEAWU8djynujaAVX7QI65Myb8qgfcZ1uKbdpg3ZzKl8=
-github.com/tinygo-org/tinygo v0.36.0 h1:tHuC0+TBbx9Y7BlJv90FYpqiYdfY/WSrI2lo9jJSg44=
-github.com/tinygo-org/tinygo v0.36.0/go.mod h1:k3d5kfRLHcJ+bvZLe/VOlF00NVd/cvjgIEIyManFmF0=
+github.com/tinygo-org/tinygo v0.37.0 h1:N6ThUAOfgqcsZmcbkFBIJQSTBe4d/JFyTSbEjIy9yeU=
+github.com/tinygo-org/tinygo v0.37.0/go.mod h1:k3d5kfRLHcJ+bvZLe/VOlF00NVd/cvjgIEIyManFmF0=
 github.com/titanous/rocacheck v0.0.0-20171023193734-afe73141d399 h1:e/5i7d4oYZ+C1wj2THlRK+oAhjeS/TRQwMfkIuet3w0=
 github.com/titanous/rocacheck v0.0.0-20171023193734-afe73141d399/go.mod h1:LdwHTNJT99C5fTAzDz0ud328OgXz+gierycbcIx2fRs=
 github.com/tomarrell/wrapcheck/v2 v2.10.0 h1:SzRCryzy4IrAH7bVGG4cK40tNUhmVmMDuJujy4XwYDg=
