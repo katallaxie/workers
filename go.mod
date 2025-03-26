@@ -1,9 +1,10 @@
 module github.com/katallaxie/workers
 
 go 1.23.7
+toolchain go1.24.1
 
 require (
-	github.com/katallaxie/pkg v0.7.1-0.20250305100222-477833006000
+	github.com/katallaxie/pkg v0.7.2
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.9.1
 )
