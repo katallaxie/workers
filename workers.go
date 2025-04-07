@@ -5,6 +5,7 @@ package workers
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/kelseyhightower/envconfig"
 )
@@ -25,7 +26,13 @@ func Serve(handler http.Handler) {
 	addr := fmt.Sprintf(":%s", env.Port)
 	fmt.Printf("listening on: http://localhost%s\n", addr)
 
-	http.ListenAndServe(addr, handler)
+	server := &http.Server{
+		Addr:              addr,
+		ReadHeaderTimeout: 3 * time.Second,
+		Handler:           handler,
+	}
+
+	server.ListenAndServe()
 }
 
 func ServeNonBlock(http.Handler) {
