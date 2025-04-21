@@ -10,6 +10,11 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
+const (
+	defaultTimeout = 3 * time.Second
+)
+
+// Env is a struct that holds the environment variables for the server.
 type Env struct {
 	Port string `envconfig:"PORT" default:"9900"`
 }
@@ -24,15 +29,14 @@ func Serve(handler http.Handler) {
 	}
 
 	addr := fmt.Sprintf(":%s", env.Port)
-	fmt.Printf("listening on: http://localhost%s\n", addr)
 
 	server := &http.Server{
 		Addr:              addr,
-		ReadHeaderTimeout: 3 * time.Second,
+		ReadHeaderTimeout: defaultTimeout,
 		Handler:           handler,
 	}
 
-	server.ListenAndServe()
+	_ = server.ListenAndServe()
 }
 
 func ServeNonBlock(http.Handler) {

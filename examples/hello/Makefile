@@ -1,5 +1,5 @@
 WRANGLER 		?= npx -y wrangler
-GO 				?= go1.23.7
+GO 				?= go
 GO_RUN_TOOLS	?= $(GO) run -modfile ../../tools/go.mod
 GO_RUN 			?= $(GO) run -modfile ../../go.mod
 TINYGO 			?= tinygo

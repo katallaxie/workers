@@ -34,7 +34,7 @@ var config = cfg{
 
 var rootCmd = &cobra.Command{
 	Use: "gen",
-	RunE: func(cmd *cobra.Command, args []string) error {
+	RunE: func(cmd *cobra.Command, _ []string) error {
 		return runRoot(cmd.Context())
 	},
 }
