@@ -10,7 +10,7 @@ tool (
 )
 
 require (
-	github.com/katallaxie/pkg v0.7.5
+	github.com/katallaxie/pkg v0.7.6
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/spf13/cobra v1.9.1
 )
