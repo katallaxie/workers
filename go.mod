@@ -12,7 +12,7 @@ tool (
 require (
 	github.com/katallaxie/pkg v0.7.10
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 )
 
 require (
